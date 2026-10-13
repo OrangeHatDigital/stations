@@ -1,0 +1,19 @@
+<!doctype html><html lang="af"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orange Hat Digital Stations</title><style>
+body{margin:0;font-family:system-ui,sans-serif;background:#111;color:#fff}header{background:#f60;padding:18px;text-align:center}h1{margin:0;font-size:1.4em}
+main{max-width:560px;margin:auto;padding:12px}.c{display:flex;align-items:center;gap:12px;background:#1d1d1d;border-radius:12px;padding:12px;margin:10px 0}
+.l{width:56px;height:56px;border-radius:10px;background:#f60;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}.l img{width:100%;height:100%;border-radius:10px;object-fit:cover}
+.i{flex:1}.i b{display:block}.i small{color:#aaa}button{background:#f60;border:0;color:#fff;border-radius:50%;width:52px;height:52px;font-size:1.3em}button:disabled{background:#444}
+.tag{font-size:.7em;background:#333;padding:2px 6px;border-radius:6px;margin-left:4px}</style></head><body>
+<header><h1>Orange Hat Digital Stations</h1><div>Kies 'n stasie / Choose a station</div></header><main id="m"></main><audio id="a" preload="none"></audio>
+<script>
+const a=document.getElementById('a');let cur=null;
+fetch('stations.json',{cache:'no-store'}).then(r=>r.json()).then(s=>s.forEach(st=>{
+const d=document.createElement('div');d.className='c';
+const tag=st.status==='live'?'LIVE':st.status==='demo'?'DEMO':'BINNEKORT / SOON';
+d.innerHTML=`<div class="l">${st.logo?`<img src="${st.logo}" alt="">`:st.name[0]}</div><div class="i"><b>${st.name}<span class="tag">${tag}</span></b><small>${st.tagline}</small></div>`;
+const b=document.createElement('button');b.textContent='▶';b.disabled=!st.stream;b.setAttribute('aria-label','Play '+st.name);
+b.onclick=()=>{if(cur===b&&!a.paused){a.pause();b.textContent='▶';return}
+document.querySelectorAll('button').forEach(x=>x.textContent='▶');a.src=st.stream;a.play();b.textContent='❚❚';cur=b};
+d.appendChild(b);document.getElementById('m').appendChild(d)}));
+</script></body></html>

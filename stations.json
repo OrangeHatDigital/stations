@@ -1,0 +1,5 @@
+[
+ {"id":"ptr","name":"PTR","tagline":"Live stroom / Live stream","logo":"","stream":"https://eu10.fastcast4u.com:12215/stream","status":"live"},
+ {"id":"bosboer","name":"Bosboer Radio","tagline":"Venue radio – Bosboer","logo":"","stream":"","status":"todo","note":"TODO: Fastcast4u eu4 stream URL (migrating to Everest Cast)"},
+ {"id":"dorsland","name":"Dorsland (naam volg)","tagline":"Binnekort / Coming soon","logo":"","stream":"https://www.dropbox.com/scl/fi/7unfkk4dz0epzew8zizrr/Dorsland_Radio_Demo.mp3?rlkey=6h0yzkgkhs3epgo9qbvz3d7n8&raw=1","status":"demo"}
+]
